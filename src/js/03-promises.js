@@ -22,7 +22,6 @@ formRef.addEventListener('submit', e => {
             message: `✅ Fulfilled promise ${position} in ${delay}ms`,
             color: 'green',
             position: 'topRight',
-            overlayClose: false,
           });
         })
         .catch(({ position, delay }) => {
@@ -30,7 +29,6 @@ formRef.addEventListener('submit', e => {
             message: `❌ Rejected promise ${position} in ${delay}ms`,
             color: 'red',
             position: 'topRight',
-            overlayClose: false,
           });
         });
       data.delay = data.delay + data.step;
