@@ -43,8 +43,9 @@ function updateTimer() {
   const currentDate = new Date();
   const finalDate = new Date(value);
 
-  if (currentDate === finalDate) {
+  if (currentDate >= finalDate) {
     clearInterval(intervalId);
+    return;
   }
 
   updateContent(convertMs(finalDate - currentDate));
