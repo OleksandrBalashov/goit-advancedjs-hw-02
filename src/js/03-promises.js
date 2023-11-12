@@ -34,11 +34,6 @@ refs.form.addEventListener('submit', e => {
           color: 'red',
           position: 'topRight',
         });
-      })
-      .finally(() => {
-        refs.delay.disabled = false;
-        refs.step.disabled = false;
-        refs.amount.disabled = false;
       });
     data.delay = data.delay + data.step;
   }
