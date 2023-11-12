@@ -7,9 +7,11 @@ let intervalId;
 
 refs.startBtn.addEventListener('click', handleStart);
 refs.stopBtn.addEventListener('click', handleStop);
+refs.stopBtn.disabled = true;
 
 function handleStart() {
   refs.startBtn.disabled = true;
+  refs.stopBtn.disabled = false;
   intervalId = setInterval(
     () => (document.body.style.backgroundColor = getRandomHexColor()),
     1000
@@ -18,6 +20,7 @@ function handleStart() {
 
 function handleStop() {
   refs.startBtn.disabled = false;
+  refs.stopBtn.disabled = true;
   clearInterval(intervalId);
 }
 

@@ -18,9 +18,11 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    selectedDates[0] < new Date()
-      ? handleWrongDate()
-      : handleCorrectDate(selectedDates[0]);
+    if (selectedDates[0] < new Date()) {
+      handleWrongDate();
+      return;
+    }
+    handleCorrectDate(selectedDates[0]);
   },
 };
 
@@ -32,6 +34,8 @@ flatpickr(refs.inputPicker, options);
 refs.startBtn.disabled = true;
 
 refs.startBtn.addEventListener('click', () => {
+  refs.startBtn.disabled = true;
+  refs.inputPicker.disabled = true;
   updateTimer();
 
   intervalId = setInterval(() => {
@@ -44,6 +48,8 @@ function updateTimer() {
   const finalDate = new Date(value);
 
   if (currentDate >= finalDate) {
+    refs.startBtn.disabled = false;
+    refs.inputPicker.disabled = false;
     clearInterval(intervalId);
     return;
   }
